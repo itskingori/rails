@@ -226,6 +226,11 @@ module ActionDispatch # :nodoc:
       end
     end
 
+    def set_headers(params) do
+      raise if params.nil?
+      params.each { |name, value| set_header(name, value) }
+    end
+
     def sending?;   synchronize { @sending };   end
     def committed?; synchronize { @committed }; end
     def sent?;      synchronize { @sent };      end
